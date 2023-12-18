@@ -1,0 +1,25 @@
+const express = require('express');
+const bodyParser = require('body-parser');
+
+const app = express();
+const port = 8080;
+
+// Middleware para permitir a análise do corpo das requisições POST
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.json());
+
+// Rota para requisições GET
+app.get('/', (req, res) => {
+  res.send('Rota GET: Olá, mundo!');
+});
+
+// Rota para requisições POST
+app.post('/', (req, res) => {
+  const mensagem = req.body.mensagem || 'Nenhuma mensagem recebida.';
+  res.send(`Rota POST: Mensagem recebida: ${mensagem}`);
+});
+
+// Inicie o servidor na porta especificada
+app.listen(port, () => {
+  console.log(`Servidor rodando em http://localhost:${port}`);
+});
