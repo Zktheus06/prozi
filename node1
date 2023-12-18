@@ -1,0 +1,36 @@
+
+A web funciona com base no modelo cliente-servidor, onde o cliente é um dispositivo (como um navegador da web) que faz solicitações a um servidor, que é um computador que processa essas solicitações e fornece uma resposta. O protocolo principal utilizado nesse contexto é o HTTP (Hypertext Transfer Protocol). Aqui estão os passos básicos de como a comunicação cliente-servidor acontece:
+
+O cliente faz uma solicitação (request):
+
+O cliente envia uma solicitação HTTP para um servidor.
+A solicitação inclui o método (GET, POST, etc.) e o caminho do recurso desejado.
+O servidor processa a solicitação:
+
+O servidor recebe a solicitação e processa-a de acordo com o caminho especificado.
+Pode envolver acesso a bancos de dados, execução de código, ou qualquer outra operação necessária.
+O servidor envia uma resposta (response):
+
+O servidor responde à solicitação com uma mensagem HTTP que inclui um código de status (indicando sucesso, redirecionamento, erro, etc.) e os dados solicitados (como HTML, JSON, etc.).
+O cliente recebe a resposta:
+
+O cliente recebe a resposta do servidor e processa-a.
+Em um navegador, a resposta pode ser renderizada como uma página web.
+
+
+
+
+
+const express = require('express');
+const app = express();
+const port = 3000;
+
+// Rota para a página inicial
+app.get('/', (req, res) => {
+  res.send('Bem-vindo ao meu servidor Node.js!');
+});
+
+// Inicie o servidor na porta especificada
+app.listen(port, () => {
+  console.log(`Servidor rodando em http://localhost:${port}`);
+});
