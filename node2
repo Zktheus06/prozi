@@ -1,0 +1,39 @@
+const express = require('express');
+const app = express();
+const port = 8080;
+
+// Rota estática
+app.get('/', (req, res) => {
+  res.send('Rota estática: Bem-vindo à página inicial!');
+});
+
+// Rota com placeholder dinâmico
+app.get('/usuario/:id', (req, res) => {
+  const usuarioId = req.params.id;
+  res.send(`Rota dinâmica com placeholder: Detalhes do usuário ${usuarioId}`);
+});
+
+// Rota com query parâmetro
+app.get('/produto', (req, res) => {
+  const produtoId = req.query.id;
+  if (produtoId) {
+    res.send(`Rota dinâmica com query: Detalhes do produto ${produtoId}`);
+  } else {
+    res.send('Rota dinâmica com query: Lista de produtos');
+  }
+});
+
+// Rota com controle de fluxo estático
+app.get('/sobre', (req, res) => {
+  const mostrarDetalhes = req.query.mostrarDetalhes === 'true';
+  if (mostrarDetalhes) {
+    res.send('Rota estática com controle de fluxo: Detalhes sobre a empresa.');
+  } else {
+    res.send('Rota estática com controle de fluxo: Informações gerais sobre a empresa.');
+  }
+});
+
+// Inicie o servidor na porta especificada
+app.listen(port, () => {
+  console.log(`Servidor rodando em http://localhost:${port}`);
+});
