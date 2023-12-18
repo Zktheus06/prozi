@@ -1,0 +1,16 @@
+import React, { useState } from 'react';
+
+function MeuComponente() {
+  const [contador, setContador] = useState(0);
+
+  return (
+    <div>
+      <p>Valor do Contador: {contador}</p>
+      <button onClick={() => setContador(contador + 1)}>
+        Aumentar Contador
+      </button>
+    </div>
+  );
+}
+
+export default MeuComponente;
