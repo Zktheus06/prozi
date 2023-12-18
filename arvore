@@ -1,0 +1,74 @@
+from binarytree import build, Node
+
+# Função para inserir um valor em uma árvore binária de busca
+def inserir_na_arvore(arvore, valor):
+    if arvore is None:
+        return Node(valor)
+    
+    if valor < arvore.value:
+        arvore.left = inserir_na_arvore(arvore.left, valor)
+    else:
+        arvore.right = inserir_na_arvore(arvore.right, valor)
+    
+    return arvore
+
+# Função para remover um valor de uma árvore binária de busca
+def remover_da_arvore(arvore, valor):
+    if arvore is None:
+        return arvore
+    
+    if valor < arvore.value:
+        arvore.left = remover_da_arvore(arvore.left, valor)
+    elif valor > arvore.value:
+        arvore.right = remover_da_arvore(arvore.right, valor)
+    else:
+        # Caso 1: Nó folha ou caso 2: Nó com apenas um filho
+        if arvore.left is None:
+            return arvore.right
+        elif arvore.right is None:
+            return arvore.left
+        
+        # Caso 3: Nó com dois filhos
+        min_valor = encontrar_valor_minimo(arvore.right)
+        arvore.value = min_valor
+        arvore.right = remover_da_arvore(arvore.right, min_valor)
+    
+    return arvore
+
+# Função para encontrar o valor mínimo em uma árvore
+def encontrar_valor_minimo(arvore):
+    while arvore.left is not None:
+        arvore = arvore.left
+    return arvore.value
+
+# Lista1
+lista1 = [45, 20, 30, 60, 81, 97, 100, 7, 8, 4]
+
+# Construir a árvore para Lista1
+arvore1 = build(lista1)
+
+# Adicionar o valor 50 à árvore1
+arvore1 = inserir_na_arvore(arvore1, 50)
+
+# Remover o valor 30 da árvore1
+arvore1 = remover_da_arvore(arvore1, 30)
+
+# Visualizar a árvore1
+print("Árvore1:")
+print(arvore1)
+
+# Lista2
+lista2 = [15, 6, 18, 3, 7, 16, 20, 4]
+
+# Construir a árvore para Lista2
+arvore2 = build(lista2)
+
+# Adicionar o valor 10 à árvore2
+arvore2 = inserir_na_arvore(arvore2, 10)
+
+# Remover o valor 6 da árvore2
+arvore2 = remover_da_arvore(arvore2, 6)
+
+# Visualizar a árvore2
+print("\nÁrvore2:")
+print(arvore2)
