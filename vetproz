@@ -1,0 +1,36 @@
+class Pet:
+    def __init__(self):
+        self.nome_animal = ""
+        self.raca_animal = ""
+        self.idade_animal = 0
+        self.nome_responsavel = ""
+        self.telefone_responsavel = ""
+
+    def cadastrar_pet(self):
+        print("Cadastro de Animal de Estimação")
+        self.nome_animal = input("Nome do animal: ")
+        self.raca_animal = input("Raça do animal: ")
+        self.idade_animal = int(input("Idade do animal: "))
+        self.nome_responsavel = input("Nome do responsável: ")
+        self.telefone_responsavel = input("Telefone do responsável: ")
+        print("Cadastro concluído!\n")
+
+    def obter_cadastro(self):
+        cadastro = f"Nome do Animal: {self.nome_animal}\n"
+        cadastro += f"Raça do Animal: {self.raca_animal}\n"
+        cadastro += f"Idade do Animal: {self.idade_animal}\n"
+        cadastro += f"Nome do Responsável: {self.nome_responsavel}\n"
+        cadastro += f"Telefone do Responsável: {self.telefone_responsavel}\n"
+        return cadastro
+
+# Exemplo de utilização
+if __name__ == "__main__":
+    # Criar um objeto Pet
+    meu_pet = Pet()
+
+    # Cadastrar o pet
+    meu_pet.cadastrar_pet()
+
+    # Obter e imprimir o cadastro
+    cadastro_obtido = meu_pet.obter_cadastro()
+    print("Cadastro do Animal de Estimação:\n", cadastro_obtido)
