@@ -1,0 +1,28 @@
+const express = require('express');
+const app = express();
+const port = 3000;
+
+// Rota para requisições GET
+app.get('/', (req, res) => {
+  res.send('Resposta para requisição GET');
+});
+
+// Rota para requisições POST
+app.post('/', (req, res) => {
+  res.send('Resposta para requisição POST');
+});
+
+// Rota para requisições PUT
+app.put('/', (req, res) => {
+  res.send('Resposta para requisição PUT');
+});
+
+// Rota para requisições DELETE
+app.delete('/', (req, res) => {
+  res.send('Resposta para requisição DELETE');
+});
+
+// Inicie o servidor na porta especificada
+app.listen(port, () => {
+  console.log(`Servidor Express rodando em http://localhost:${port}`);
+});
