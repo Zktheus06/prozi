@@ -1,0 +1,31 @@
+def insertion_sort(vetor):
+    for i in range(1, len(vetor)):
+        chave = vetor[i]
+        j = i - 1
+        while j >= 0 and chave < vetor[j]:
+            vetor[j + 1] = vetor[j]
+            j -= 1
+        vetor[j + 1] = chave
+
+def criar_vetor(tamanho):
+    vetor = []
+    numero = 1
+    for _ in range(tamanho):
+        vetor.append(numero)
+        numero += 2
+    return vetor
+
+# Tamanho do vetor desejado
+tamanho_do_vetor = 30
+
+# Criar vetor de números ímpares em ordem crescente
+vetor = criar_vetor(tamanho_do_vetor)
+
+# Imprimir vetor antes da ordenação
+print("Vetor original:", vetor)
+
+# Ordenar o vetor usando o Insertion Sort
+insertion_sort(vetor)
+
+# Imprimir vetor após a ordenação
+print("Vetor ordenado:", vetor)
