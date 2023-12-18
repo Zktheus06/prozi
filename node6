@@ -1,0 +1,20 @@
+const express = require('express');
+const app = express();
+const port = 3000;
+
+// Rota para listar itens com código de status dinâmico
+app.get('/listar/:quantidade', (req, res) => {
+  const quantidade = parseInt(req.params.quantidade);
+
+  // Verifica se a quantidade é maior que 20
+  if (quantidade > 20) {
+    res.status(404).send('HTTP 404 - Não encontrado');
+  } else {
+    res.status(200).send(`HTTP 200 - Listando ${quantidade} itens`);
+  }
+});
+
+// Inicie o servidor na porta especificada
+app.listen(port, () => {
+  console.log(`Servidor Express rodando em http://localhost:${port}`);
+});
