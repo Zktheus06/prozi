@@ -1,0 +1,16 @@
+// src/App.js
+import React from 'react';
+import './App.css';
+import Navegacao from './Navegacao';
+
+function App() {
+  return (
+    <div className="App">
+      <header className="App-header">
+        <Navegacao />
+      </header>
+    </div>
+  );
+}
+
+export default App;
